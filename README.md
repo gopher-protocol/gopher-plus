@@ -11,3 +11,16 @@ The original memo was formatted as a raw text file with manual line-wrapping.  I
 The memo has been reformatted to Markdown format (with minor corrections to typos) to make it easier to read for developers implementing Gopher+ support and hosted in a Git repo to make contributions and corrections easier.
 
 **No "editorial" changes have been made.**
+
+## Copyright & Credits
+
+From the original memo: 
+
+> Farhad Anklesaria, Paul Lindner, Mark P.  McCahill,
+> Daniel Torrey, David Johnson, Bob Alberti
+>
+>Microcomputer and Workstation  Networks Center /
+>Computer and Information Systems
+>University of Minnesota
+>
+>July 30, 1993
