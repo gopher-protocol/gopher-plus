@@ -297,7 +297,7 @@ Required attributes and suggested attributes.
 
 ### A1.0 The `+INFO` attribute block
 
-The `+INFO` attribute block is sent whenever an item's attributes are requested.  It is required that the Attribute Information list for an  item must contain a one-line `+INFO` attribute, and the `+INFO` attribute must contain the gopher+ descriptor for the item.
+The `+INFO` attribute block is sent whenever an item's attributes are requested.  It is required that the Attribute Information list for an  item must contain a one-line `+INFO` attribute, and the `+INFO` attribute must contain the Gopher+ descriptor for the item.
 
 ```
 +INFO: 1Nice stuffF/selectorFhostFportF+
