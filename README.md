@@ -12,9 +12,11 @@ The memo has been reformatted to Markdown format (with minor corrections to typo
 
 **No "editorial" changes have been made.**
 
-## Copyright & Credits
+## Copyright, Authors, and License
 
-From the original memo: 
+License is not explicitly stated, although it does state `Distribution of this document is unlimited`.
+
+Author information from the original memo: 
 
 > Farhad Anklesaria, Paul Lindner, Mark P.  McCahill,
 > Daniel Torrey, David Johnson, Bob Alberti
