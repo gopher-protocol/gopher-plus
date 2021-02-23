@@ -6,9 +6,9 @@ This repository contains the 'memo' for the Gopher+ protocol (an extension of th
   - **[`gopherplus.md`](https://github.com/gopher-protocol/gopher-plus/blob/main/gopherplus.md)** Reformatted markdown memo (with minor typo corrections).
 
 ## Why
-The original memo was formatted as a raw text file with manual line-wrapping.  It also contained various miscellaneous punctuation and spelling typos.
+The original memo was formatted as a raw text file with manual line-wrapping, and was never an official RFC so is not available from the `ietf.org` site.  It also contained various miscellaneous punctuation and spelling typos. 
 
-The memo has been reformatted to Markdown format (with minor corrections to typos) to make it easier to read for developers implementing Gopher+ support and hosted in a Git repo to make contributions and corrections easier.
+The memo has been reformatted to Markdown format (with minor corrections to typos) and hosted on Github to make it easier to find/read/use for developers who are implementing Gopher+ support.
 
 **No "editorial" changes have been made.**
 
