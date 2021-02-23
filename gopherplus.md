@@ -3,17 +3,13 @@
 
 **Upward compatible enhancements to the Internet Gopher protocol**
 
-
 Farhad Anklesaria, Paul Lindner, Mark P.  McCahill, Daniel Torrey, David Johnson, Bob Alberti
 
 Microcomputer and Workstation  Networks Center / Computer and Information Systems University of Minnesota
 
 July 30, 1993
 
-
-
 > gopher+  n.  1. Hardier strains of mammals of the family  Geomyidae.  2. (Amer. colloq.) Native or inhabitant of  Minnesota, the Gopher state, in full winter regalia (see  PARKA).  3. (Amer. colloq.) Executive secretary.  4.  (computer tech.) Software following a simple protocol for  burrowing through a TCP/IP internet, made more powerful by  simple enhancements (see CREEPING FEATURISM).
-
 
 ## Abstract
 
@@ -21,13 +17,13 @@ The internet Gopher protocol was designed for distributed  document search and r
 
 Distribution of this document is unlimited.  Please send  comments to the Gopher development team: <gopher@boombox.micro.umn.edu>.  Implementation of the  mechanisms described here is encouraged.
 
-## 1.      Introduction
+## 1. Introduction
 
 The Internet Gopher protocol was designed primarily to act as a distributed document  delivery system.  It has enjoyed increasing popularity, and  is being used for purposes that were not visualized when the protocol was first outlined.  The rest of this document describes the Gopher+ enhancements in a non-rigorous but easily read and understood  way.  There is a short BNF-like section at the end for exact syntax descriptions.  Throughout the document, `"F"` stands  for the ASCII TAB character. There is an implicit carriage return and linefeed at the ends of lines; these will only be explicitly  mentioned where necessary to avoid confusion. To understand this document, you really must be familiar with the basic Gopher protocol.
 
 Servers and clients understanding the Gopher+ extensions will transmit extra information at the ends of list and request lines.  Old, basic gopher clients ignore such information.  New  Gopher+ aware servers continue to work at their old level  with unenhanced clients.  The extra information that can be communicated by Gopher+ clients may be used to summon new capabilities to bridge  the most keenly felt shortcomings of the venerable old  Gopher.
 
-## 2.      How does Gopher+ work?
+## 2. How does Gopher+ work?
 
 Gopher+ enhancements rely on transmitting an "extra" tab delimited fields beyond what regular (old) Gopher servers and clients now use.  If most existing (old) clients were to encounter extra stuff beyond the "port"  field in a list (directory), most would ignore it. Gopher+  servers will return item descriptions in this form:
 
@@ -37,7 +33,7 @@ Gopher+ enhancements rely on transmitting an "extra" tab delimited fields beyond
 
 If an existing (old) client has problems with additional  information beyond the port, it should not take much more  than a simple tweak to have it discard unneeded stuff.
 
-### 2.1     Advisory issued to client maintainers.
+### 2.1 Advisory issued to client maintainers.
 
 If it does not do this already, your existing client should be modified  as soon as possible to ignore extra fields beyond what it  expects to find.  This will ensure thatyour clients does not break when it encounters Gopher+ servers in gopherspace.
 
@@ -47,7 +43,7 @@ All the regular Gopher protocol info remains intact except for:
 
 2. In the original Gopher protocol, there was provision for a date-time descriptor (sec 3.6) to be sent after the selector (for use by autoindexer beasts).  As far  as we know, while the descriptor is implemented in the Mac  server, it is not in any other server and no clients or  daemons use it.  This is a good time to withdraw this feature. The basic gopher protocol has been revised for the final time and will be frozen.
 
-### 2.2     Gopher+ item lists.
+### 2.2 Gopher+ item lists.
 
 Gopher servers that can utilize the Gopher+ enhancements  will send some additional stuff (frequently the character `"+"`) after the port field describing any list item. eg:
 
@@ -59,7 +55,7 @@ Gopher servers that can utilize the Gopher+ enhancements  will send some additio
 
 The first line is the regular old gopher item description. The second line is new Gopher+ item description. The third line is a Gopher+ description of a document. Old  gopher clients can request the latter two items using old  format gopher selector strings and retrieve the items. New, Gopher+ savvy clients will notice the trailing `+` and know that they can do extra  things with these kinds of items.
 
-### 2.3     Gopher+ data transfer.
+### 2.3 Gopher+ data transfer.
 
 If a client sends out a Gopher+ type request to a server (by  tagging on a tab and a `"+"` to the request):
 
@@ -88,25 +84,25 @@ The server may return an error also, as in:
 --1<CRLF><data><CRLF>.<CRLF>
 ```
 
-The (short!) error message will be in ASCII text in the data part.  The first token on the  first line of the error text (data) contains an error-code  (an integer).  It is recommended that the first line also contain  the e-mail address of the administrator of the  server (in angle brackets). Both the error-code and the email address may easily be  extracted by the client.  Subsequent lines contain a short  error message that may be displayed to the user. Basic error codes are:
+The (short!) error message will be in ASCII text in the data part.  The first token on the  first line of the error text (data) contains an error-code  (an integer).  It is recommended that the first line also contain the e-mail address of the administrator of the server (in angle brackets). Both the error-code and the email address may easily be  extracted by the client.  Subsequent lines contain a short  error message that may be displayed to the user. Basic error codes are:
 
 ```
   1  Item is not available.
-  2  Try again later ("eg.  My load is too high right now.")
+  2  Try again later ("eg. My load is too high right now.")
   3  Item has moved.  Following the error-code is the  gopher descriptor of where it now lives.
 ```
 
 More error codes may be defined as the need arises.
 
-This should be obvious: if the client sends out an "old"  Gopher kind of request:
+This should be obvious: if the client sends out an "old" Gopher kind of request:
 
 ```
-    bar selector
+bar selector
 ```
 
-the server will know that it is talking to an old client and  will respond in the old way. This means that old gopher  clients can still access information on Gopher+ servers.
+the server will know that it is talking to an old client and will respond in the old way. This means that old gopher clients can still access information on Gopher+ servers.
 
-### 2.4     Gopher+ client requests.
+### 2.4 Gopher+ client requests.
 
 Clients can send requests to retrieve the contents of an item in this form:
 ```        
@@ -117,7 +113,7 @@ If dataFlag is `'0'`, or nonexistent, then the client will not  send any data be
 
 Note that in the original Gopher protocol, a query submitted to an index server might have a selector string followed by a `TAB` and the words for which the index server was being asked to search. In Gopher+, the extra `TAB` and Gopher+ information follow the words for which the server is being asked to search. Gopher+ client have to be smart enough to know that in the case of a type `7` item (an index server) they append the Gopher+ information after the words being searched for.
 
-### 2.5     Gopher+ Item Attribute Information.
+### 2.5 Gopher+ Item Attribute Information.
 
 The most basic enhancement of Gopher+ items is the ability to associate information about an item such as size, alternative views, the administrator, an abstract, etc. with the item. To get Attribute Information, a client can send out a request to the gopher server that looks like  this:
 
@@ -177,7 +173,7 @@ Dream on: What gets us excited are alternate representations for directory lists
 
 Note that interested parties outside gopherspace have long  and complex wish-lists for "attributes" that all well-dressed Internet citizens should have.  We don't want to comment on the use or value of these laundry-lists.  Suffice it to say that nothing precludes server  administrators from including whatever attributes they see  fit to include. Certainly IAFA blocks are desirable, bearing  UDIs, URL's or whatever else is desired.  The gopher community will probably arrive at a  list of "recommended" attributes that server administrators  should try to support.  Because not every server  administrator sees advantage to cluttering Attribute Info  files with information their  primary users will never need, it does not seem fair to "force" folks to include them; most will just ignore the  harsh protocol guideline and the value of the protocol will  be diminished.  We want to mandate as little as we possibly can.
 
-### 2.6     Using Attribute Info: Alternate representations (`+VIEWS`).
+### 2.6 Using Attribute Info: Alternate representations (`+VIEWS`).
 
 The user may locate a document and wonder if there are representations of it besides, say, the standard Text. Using the appropriate client incantation (Option Double-Click? or whatever) the user indicates a wish to see what's  available.  The client retrieves the Attribute Information, displays the list of views to the  user in some kind of scrolling list dialog.  User selects a  line and client now requests the document in say, Postscript  representation:
 
@@ -191,7 +187,7 @@ Smart clients are not precluded from doing things like "Always get Postscript if
 the selectorF+GView
 ```
 
-### 2.7     Getting attributes for all items in a directory in one transaction.
+### 2.7 Getting attributes for all items in a directory in one transaction.
 
 Heavyweight/clever/special-purpose clients may want to know  all the attributes of items in a given directory in one transaction. The `"$"` command is used to request all the attributes of a directory at once. For instance, a client might sent the  request:
 
@@ -235,7 +231,7 @@ The `$` command makes it possible for a client that does not mind burning bandwi
 
 Analogous to use of the `$` command, the `!` command can also be used to request certain attribute blocks.
 
-### 2.8     Gopher+ Interactive Query items.
+### 2.8 Gopher+ Interactive Query items.
 
 The principle here is based on Roland Schemer's "Q/q" type  ideas. We're calling it the Interactive Query enhancements...
 
@@ -285,7 +281,7 @@ To do "true" scripting, we have to do one of two things
 
 As Opus the Penguin would say:  a Hairball.
 
-### 2.9     Gopher+ Pictures, Sounds, Movies.
+### 2.9 Gopher+ Pictures, Sounds, Movies.
 
 A lot of folks need ability to retrieve and display pictures, but there is no real consensus on ONE format for these pictures.  We don't want to define a type character for every oddball  picture type.  Gopher+ handles Pictures, Movies, and Sounds by defining three item types: `":"` for bitmap images, `";"` for movies, and `"<"` for sounds (originally `I`, `M`, and `S` were suggested, but they were informally in use in other ways; the only thing magic  about `":"`, `";"`, and `"<"`, is that they are the first  characters after `'9'`)
 
