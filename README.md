@@ -8,7 +8,7 @@ This repository contains the 'memo' for the Gopher+ protocol (an extension of th
 ## Why
 The original memo was formatted as a raw text file with manual line-wrapping, and was never an official RFC so is not available from the `ietf.org` site.  It also contained various miscellaneous punctuation and spelling typos. 
 
-The memo has been reformatted to Markdown format (with minor corrections to typos) and hosted on Github to make it easier to find/read/use for developers who are implementing Gopher+ support.
+The memo has been reformatted to Markdown format (with minor corrections to typos) and hosted on Github to make it easier to find/read/use/correct for developers who are implementing Gopher+ support.
 
 **No "editorial" changes have been made.**
 
